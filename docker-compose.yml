@@ -11,6 +11,14 @@ services:
   volumes:
    - ./public_html:/var/www/html
   container_name: apache_service
+ php:
+  build:
+   context: './php/'
+  networks:
+   - backend
+  volumes:
+   - ./public_html:/var/www/html
+  container_name: php_service
 networks:
  frontend:
  backend:
