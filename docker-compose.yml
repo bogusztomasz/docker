@@ -1,5 +1,16 @@
 version: "3.7"
 services:
+ apache:
+  build:
+   context: './apache/'
+  networks:
+   - frontend
+   - backend
+  ports:
+   - "14080:80"
+  volumes:
+   - ./public_html:/var/www/html
+  container_name: apache_service
 networks:
  frontend:
  backend:
