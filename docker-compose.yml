@@ -12,6 +12,7 @@ services:
    - ./public_html:/var/www/html
   depends_on:
    - php
+   - db
   container_name: apache_service
  php:
   build:
@@ -21,6 +22,21 @@ services:
   volumes:
    - ./public_html:/var/www/html
   container_name: php_service
+ db:
+  image: mariadb:10.5.10
+  restart: always
+  networks:
+   - backend
+  ports:
+   - "13306:3306"
+  volumes:
+   - ./db/data:/var/lib/mysql
+  environment:
+   MARIADB_ROOT_PASSWORD: "rootpassword"
+   MARIADB_DATABASE: "base"
+   MARIADB_USER: "user"
+   MARIADB_PASSWORD: "userpassword"   
+  container_name: db_service
 networks:
  frontend:
  backend:
