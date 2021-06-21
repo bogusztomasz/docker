@@ -10,6 +10,8 @@ services:
    - "14080:80"
   volumes:
    - ./public_html:/var/www/html
+  depends_on:
+   - php
   container_name: apache_service
  php:
   build:
