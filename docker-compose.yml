@@ -37,6 +37,21 @@ services:
    MARIADB_USER: "user"
    MARIADB_PASSWORD: "userpassword"   
   container_name: db_service
+ phpmyadmin:
+  image: phpmyadmin
+  restart: always
+  ports:
+   - "14081:80"
+  depends_on:
+   - db
+  environment:
+   PMA_HOSTS: db
+   MYSQL_ROOT_PASSWORD: "rootpassword"
+   MYSQL_USER: "user"
+   MYSQL_PASSWORD: "userpassword"
+  networks:
+   - backend
+  container_name: phpmyadmin_service
 networks:
  frontend:
  backend:
