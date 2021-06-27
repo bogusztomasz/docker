@@ -9,7 +9,7 @@ services:
   ports:
    - "14080:80"
   volumes:
-   - ./public_html:/var/www/html
+   - ./:/var/www/html
   depends_on:
    - php
    - db
@@ -20,7 +20,7 @@ services:
   networks:
    - backend
   volumes:
-   - ./public_html:/var/www/html
+   - ./:/var/www/html
   container_name: php_service
  db:
   image: mariadb:10.5.10
