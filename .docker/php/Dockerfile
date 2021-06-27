@@ -6,3 +6,4 @@ RUN apk update; apk upgrade;
 
 RUN chmod +x /usr/local/bin/install-php-extensions && sync
 RUN docker-php-ext-install mysqli
+RUN docker-php-ext-install pdo_mysql
