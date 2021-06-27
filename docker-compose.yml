@@ -2,7 +2,7 @@ version: "3.7"
 services:
  apache:
   build:
-   context: './apache/'
+   context: './.docker/apache/'
   networks:
    - frontend
    - backend
@@ -16,7 +16,7 @@ services:
   container_name: apache_service
  php:
   build:
-   context: './php/'
+   context: './.docker/php/'
   networks:
    - backend
   volumes:
@@ -30,7 +30,7 @@ services:
   ports:
    - "13306:3306"
   volumes:
-   - ./db/data:/var/lib/mysql
+   - ./.docker/db/data:/var/lib/mysql
   environment:
    MARIADB_ROOT_PASSWORD: "rootpassword"
    MARIADB_DATABASE: "base"
